@@ -43,7 +43,7 @@ struct Task {
 };
 
 Task myCoroutine() {
-    std::cerr << "Inside coroutine.\n"
+    std::cerr << "Inside coroutine.\n";
     co_return; // make it a coroutine
 }
 

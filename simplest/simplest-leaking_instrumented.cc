@@ -2,7 +2,7 @@
 #include <iostream>
 
 auto dbg = [](const char* s) {
-        std::cout << "Function " << s << " called.\n";
+        std::cerr << "Function " << s << " called.\n";
 };
 
 // The caller-level type
@@ -43,9 +43,12 @@ struct Task {
 };
 
 Task myCoroutine() {
+    std::cerr << "Inside coroutine.\n";
     co_return; // make it a coroutine
 }
 
 int main() {
+    std::cerr << "Before coroutine call.\n";
     auto c = myCoroutine();
+    std::cerr << "After coroutine call.\n";
 }
