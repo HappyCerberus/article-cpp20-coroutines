@@ -30,9 +30,12 @@ struct Task {
 Task myCoroutine() {
     using namespace std::chrono_literals;
     auto before = std::chrono::steady_clock::now();
+    std::cout << "Going to sleep on thread " <<
+	    std::this_thread::get_id() << "\n";
     co_await Sleeper{200ms};
     auto after = std::chrono::steady_clock::now();
     std::cout << "Slept for " << (after-before) / 1ms << " ms\n";
+    std::cout << "Now on thread " << std::this_thread::get_id() << "\n";
 }
 
 int main() {
