@@ -26,6 +26,10 @@ struct Task {
         t.coro_ = {};
         return *this;
     }
+    ~Task() {
+        if (coro_ && !coro_.done())
+            coro_.destroy();
+    }
 
     void destroy() { coro_.destroy(); }
     void resume() { coro_.resume(); }

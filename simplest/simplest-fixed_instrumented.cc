@@ -54,6 +54,8 @@ struct Task {
     }
     ~Task() {
         dbg(__PRETTY_FUNCTION__);
+        if (coro_ && !coro_.done())
+            coro_.destroy();
     }
 
     void destroy() { coro_.destroy(); }
